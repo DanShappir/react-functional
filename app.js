@@ -25,9 +25,6 @@ function handler(req, res) {
         res.writeHead(403);
         return res.end('Error accessing resource');
     } else {
-        if (url.indexOf('/node_modules/') !== 0) {
-            url = '/public' + url;
-        }
         fs.readFile(__dirname + url,
             function (err, data) {
                 if (err) {
