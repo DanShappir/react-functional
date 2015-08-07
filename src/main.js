@@ -1,8 +1,6 @@
 /**
  * Created by Dan_Shappir on 7/20/15.
  */
-'use strict';
-
 const React = require('react');
 
 import RF from './rf';
