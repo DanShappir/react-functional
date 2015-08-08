@@ -9,20 +9,14 @@ const RF = Object.create(Object.prototype, {
     },
     create: {
         writable: true,
-        value(render) {
-            let result = RF.NO_CHANGE;
-            let spec = {
-                displayName: render.displayName,
-                proprTypes: render.propTypes
-            };
-            if (render.defaultProps) {
-                spec.getDefaultProps = function () {
-                    return render.defaultProps;
-                };
+        value(render, spec = {}) {
+            if (spec.defaultProps) {
+                spec.getDefaultProps = () => defaultProps;
             }
+            let result = RF.NO_CHANGE;
             spec.render = function () {
                 this.render = function () {
-                    return result !== RF.NO_CHANGE ? result : null;
+                    return result;
                 };
                 return render(this.props);
             };
